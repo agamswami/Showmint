@@ -1,6 +1,3 @@
-It seems you meant to request the code for the `README.md` file again, possibly emphasizing the raw Markdown code. Below is the exact content of the `README.md` for the **StreamSphere** project, provided as a raw Markdown code block, identical to the previously shared artifact, ready for direct use in a GitHub repository.
-
-```markdown
 # StreamSphere
 
 StreamSphere is a full-stack, real-time video streaming platform inspired by YouTube, built with modern web technologies. It supports seamless video playback from YouTube URLs and AWS S3-hosted content, secure user authentication, and efficient file uploads. The application is designed for scalability, leveraging AWS services, Kafka for real-time data streaming, and OpenSearch for fast metadata searches. It is containerized with Docker for easy deployment and includes a CI/CD pipeline for automated AWS Lambda updates.
@@ -65,16 +62,3 @@ StreamSphere is a full-stack, real-time video streaming platform inspired by You
 - Introduce user playlists and video recommendations.
 
 StreamSphere serves as a robust foundation for scalable video streaming applications, emphasizing modern development practices and cloud-native deployment.
-
-## Contributions
-Contributions are welcome! Please check the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
-```
-
-### Instructions for Use
-1. Create a file named `README.md` in the root directory of your GitHub repository.
-2. Copy and paste the above Markdown content into the `README.md` file.
-3. Replace `your-username` in the `git clone` command with your actual GitHub username.
-4. Ensure a `CONTRIBUTING.md` file exists in your repository, or remove the reference to it if not applicable.
-5. Commit and push the `README.md` file to your GitHub repository.
-
-If you meant something else by "code code for read.md file" (e.g., additional files, specific code snippets, or a different format), please clarify, and I’ll provide the exact content you need!

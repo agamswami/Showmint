@@ -35,7 +35,7 @@ StreamSphere is a full-stack, real-time video streaming platform inspired by You
 ## Getting Started
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/streamsphere.git
+   git clone https://github.com/agamswami/StreamSphere.git
    ```
 2. Install dependencies:
    ```bash

@@ -1,6 +1,6 @@
-# StreamSphere
+# Showmint
 
-StreamSphere is a full-stack, real-time video streaming platform inspired by YouTube, built with modern web technologies. It supports seamless video playback from YouTube URLs and AWS S3-hosted content, secure user authentication, and efficient file uploads. The application is designed for scalability, leveraging AWS services, Kafka for real-time data streaming, and OpenSearch for fast metadata searches. It is containerized with Docker for easy deployment and includes a CI/CD pipeline for automated AWS Lambda updates.
+Showmint is a full-stack, real-time video streaming platform inspired by YouTube, built with modern web technologies. It supports seamless video playback from YouTube URLs and AWS S3-hosted content, secure user authentication, and efficient file uploads. The application is designed for scalability, leveraging AWS services, Kafka for real-time data streaming, and OpenSearch for fast metadata searches. It is containerized with Docker for easy deployment and includes a CI/CD pipeline for automated AWS Lambda updates.
 
 ## Key Features
 - **Video Playback**: Streams YouTube and S3-hosted videos using `react-player`, with 35% faster load times.
@@ -35,7 +35,7 @@ StreamSphere is a full-stack, real-time video streaming platform inspired by You
 ## Getting Started
 1. Clone the repository:
    ```bash
-   git clone https://github.com/agamswami/StreamSphere.git
+   git clone https://github.com/agamswami/Showmint.git
    ```
 2. Install dependencies:
    ```bash
@@ -61,4 +61,4 @@ StreamSphere is a full-stack, real-time video streaming platform inspired by You
 - Enhance search with fuzzy matching and autocomplete.
 - Introduce user playlists and video recommendations.
 
-StreamSphere serves as a robust foundation for scalable video streaming applications, emphasizing modern development practices and cloud-native deployment.
+Showmint serves as a robust foundation for scalable video streaming applications, emphasizing modern development practices and cloud-native deployment.

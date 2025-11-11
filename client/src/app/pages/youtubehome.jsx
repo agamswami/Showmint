@@ -14,6 +14,10 @@ const YouTubeHome = () => {
            try {
                const res = await axios.get('http://localhost:8082/watch/home');
                console.log(res);
+            //    const generateSignedURL = async (video) => {
+            //         video.signedURl = await axios.get(`http://localhost:8082/watch/key=${}`)
+            //         console.log("signed url" , video.signedURl);
+            //    }
                setVideos(res.data);
                setLoading(false); // Set loading to false when videos are fetched
            } catch (error) {
@@ -22,6 +26,8 @@ const YouTubeHome = () => {
            }
        }
        getVideos();
+
+       
 
    }, []);
 

@@ -1,14 +1,3 @@
-**/node_modules
-**/.env
-**/.DS_Store
-**/.next/
-**/out/
-**/build
-*.tsbuildinfo
-next-env.d.ts
-**/.pem
-
-
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies

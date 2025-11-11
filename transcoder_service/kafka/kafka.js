@@ -6,15 +6,29 @@ class KafkaConfig {
    constructor(){
        this.kafka = new Kafka({
            clientId: "youtube uploader",
-           brokers: ["<broker-url>"],
-           ssl: {
-               ca: [fs.readFileSync(path.resolve("./ca.pem"), "utf-8")]
-           },
-           sasl: {
-               username: "avnadmin",
-               password: "<pwd>",
-               mechanism: "plain"
-           }
+        //    brokers: ["<broker-url>"],
+        //    ssl: {
+        //        ca: [fs.readFileSync(path.resolve("./ca.pem"), "utf-8")]
+        //    },
+        //    sasl: {
+        //        username: "avnadmin",
+        //        password: "<pwd>",
+        //        mechanism: "plain"
+        //    }
+
+            brokers: [process.env.KAFKA_BROKER],
+            ssl: {
+                ca: [fs.readFileSync(path.resolve("./ca.pem"), "utf-8")]
+            },
+            sasl: {
+                       //    username: "avnadmin",
+                username: process.env.KAFKA_USERNAME,
+                       //    password: "<pwd>",
+                password: process.env.KAFKA_PASS,
+                mechanism: "plain"
+            }
+
+           
        })
        this.producer = this.kafka.producer()
        this.consumer = this.kafka.consumer({groupId: "youtube-uploader"})

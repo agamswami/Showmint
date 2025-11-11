@@ -1,18 +1,22 @@
 import {Kafka} from "kafkajs"
 import fs from "fs"
 import path from "path"
+import dotenv from "dotenv";
+dotenv.config();
 
 class KafkaConfig {
    constructor(){
        this.kafka = new Kafka({
            clientId: "youtube uploader",
-           brokers: ["<broker-url>"],
+           brokers: [process.env.KAFKA_BROKER],
            ssl: {
                ca: [fs.readFileSync(path.resolve("./ca.pem"), "utf-8")]
            },
            sasl: {
-               username: "avnadmin",
-               password: "<pwd>",
+            //    username: "avnadmin",
+               username: process.env.KAFKA_USERNAME,
+            //    password: "<pwd>",
+               password: process.env.KAFKA_PASS,
                mechanism: "plain"
            }
        })

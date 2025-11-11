@@ -13,7 +13,7 @@ export const initializeUpload = async (req, res) => {
            accessKeyId: process.env.AWS_ACCESS_KEY_ID,
            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
            region: 'ap-south-1'
-       });
+       }); 
 
        const bucketName = process.env.AWS_BUCKET;
 
@@ -69,12 +69,12 @@ export const completeUpload = async (req, res) => {
        console.log('Completing Upload');
        const { filename, totalChunks, uploadId, title, description, author } = req.body;
 
-       const uploadedParts = [];
+    //    const uploadedParts = [];
 
-       // Build uploadedParts array from request body
-       for (let i = 0; i < totalChunks; i++) {
-           uploadedParts.push({ PartNumber: i + 1, ETag: req.body[`part${i + 1}`] });
-       }
+    //    // Build uploadedParts array from request body
+    //    for (let i = 0; i < totalChunks; i++) {
+    //        uploadedParts.push({ PartNumber: i + 1, ETag: req.body[`part${i + 1}`] });
+    //    }
 
        const s3 = new AWS.S3({
            accessKeyId: process.env.AWS_ACCESS_KEY_ID,

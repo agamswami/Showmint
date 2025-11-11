@@ -7,7 +7,7 @@ import s3ToS3 from "./hls/s3Tos3.js";
 
 
 dotenv.config();
-const port = 8081
+const port = process.env.PORT || 8081
 
 const app = express();
 app.use(cors({

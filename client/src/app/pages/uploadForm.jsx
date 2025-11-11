@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
+import { redirect } from 'next/navigation'
+
 // import dotenv from "dotenv";
 
 // dotenv.config();
@@ -13,6 +14,10 @@ const UploadForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [author, setAuthor] = useState('');
+
+  
+
+  if (!session) redirect("/auth");
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);

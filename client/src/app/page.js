@@ -7,7 +7,10 @@ import UploadForm from "./upload/page";
 export default function Home() {
   return (
     <div>
+      {/* <AuthPage/> */}
       <UploadForm/>
+      {/* <Room/> */}
+      <YouTubeHome></YouTubeHome>
     </div>
   );
 }

@@ -15,9 +15,6 @@ const UploadForm = () => {
   const [description, setDescription] = useState('');
   const [author, setAuthor] = useState('');
 
-  
-
-  if (!session) redirect("/auth");
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);

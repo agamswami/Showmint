@@ -13,12 +13,12 @@ const s3 = new AWS.S3({
    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 });
 
-const mp4FileName = 'trial2.mp4';
+// const mp4FileName = '5k_Thetestdata.mp4';
 const bucketName = process.env.AWS_BUCKET;
 const hlsFolder = 'hls';
 
 
-const s3ToS3 = async () => {
+const s3ToS3 = async (mp4FileName) => {
    console.log('Starting script');
    console.time('req_time');
    try {
@@ -126,6 +126,8 @@ const s3ToS3 = async () => {
 
 
        const files = fs.readdirSync(hlsFolder);
+
+       const uploadPromises = [];  // my asycro upload
        for (const file of files) {
            if (!file.startsWith(mp4FileName.replace('.', '_'))) {
                continue;
@@ -142,9 +144,22 @@ const s3ToS3 = async () => {
                    ? 'application/x-mpegURL'
                    : null
            };
-           await s3.upload(uploadParams).promise();
-           fs.unlinkSync(filePath);
+        //    await s3.upload(uploadParams).promise();
+        
+           uploadPromises.push(
+             s3
+               .upload(uploadParams)
+               .promise()
+               .then(() => {
+                 fs.unlinkSync(filePath); // delete local file after upload finishes
+                 console.log(`Uploaded & deleted ${file}`);
+               })
+           );
+        //    fs.unlinkSync(filePath);
        }
+
+       await Promise.all(uploadPromises);
+
        console.log(
            `Uploaded media m3u8 playlists and ts segments to s3. Also deleted locally`
        );

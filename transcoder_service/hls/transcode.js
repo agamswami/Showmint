@@ -44,7 +44,7 @@ const convertToHLS = async()=>{
                     `-b:a ${audioBitrate}`,
                     `-vf scale=${resolution}`,
                     `-f hls`,
-                    `-hls_time 10`,
+                    `-hls_time 10`, // length of chunk in time
                     `-hls_list_size 0`,
                     `-hls_segment_filename output/${segmentFileName}`
                 ])

@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div>
       {/* <AuthPage/> */}
-      <UploadForm/>
+      {/* <UploadForm/> */}
       {/* <Room/> */}
       <YouTubeHome></YouTubeHome>
     </div>

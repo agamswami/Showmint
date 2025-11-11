@@ -21,7 +21,7 @@ const VideoPlayer = () => {
                });
        } else {
            console.log('HLS is not supported');
-           // Play from the original video file
+           // Play from the original video file   
        }
    }, [src]);
 

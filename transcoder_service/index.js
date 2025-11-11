@@ -22,14 +22,16 @@ app.get('/', (req, res) => {
 })
 
 app.get('/transcode', (req, res) => {
-    s3ToS3();
-    //convertToHLS();
+    s3ToS3(req.body.name);
+    // convertToHLS();
     res.send('Transcoding done');
 })
 
 const kafkaconfig = new KafkaConfig()
 kafkaconfig.consume("transcode", (value) => {
-    console.log("Got data from kafka : ", value)
+    console.log("Got data from kafka : ", value);
+    s3ToS3(value.title);
+    console.log("transcoding done");
 })
 
 

@@ -12,20 +12,37 @@ const YouTubeHome = () => {
    useEffect(() => {
        const getVideos = async () => {
            try {
+            //    const cloudFrontURl = await axios.get('http://localhost:8082/') 
                const res = await axios.get('http://localhost:8082/watch/home');
+            //    const res = await axios.get(`${process.env.NEXT_PUBLIC_CDF_URL}/hls/`);
+
                console.log(res);
             //    const generateSignedURL = async (video) => {
             //         video.signedURl = await axios.get(`http://localhost:8082/watch/key=${}`)
             //         console.log("signed url" , video.signedURl);
             //    }
-               setVideos(res.data);
-               setLoading(false); // Set loading to false when videos are fetched
+
+                const genrateCDF_URL = (video) => {
+                    video.CDF_URL = `${process.env.NEXT_PUBLIC_CDF_URL}/hls/${video.filename.replace(
+        '.',
+        '_'
+    )}_master.m3u8`
+                    return video;
+                } 
+
+                const withCDF_URL = res.data.map(genrateCDF_URL);
+                // setVideos(res.data);
+                setVideos(withCDF_URL);
+                console.log(videos);
+
+                setLoading(false); // Set loading to false when videos are fetched
            } catch (error) {
                console.log('Error in fetching videos : ', error);
                setLoading(false);
            }
        }
        getVideos();
+       
 
        
 
@@ -42,9 +59,9 @@ const YouTubeHome = () => {
                        <div key={video.id}
                            className="border rounded-md overflow-hidden">
                            <div>
-                               <ReactPlayer url={video.url}
-                                   width="360px"
-                                   height="180px"
+                               <ReactPlayer url={video.CDF_URL}
+                                   width="100%"
+                                   height="100%"
                                    controls={true}
                                />
                            </div>

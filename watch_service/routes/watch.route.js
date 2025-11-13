@@ -7,4 +7,5 @@ const router = express.Router();
 router.get('/', watchVideo);
 router.get('/home', getAllVideos);
 
+
 export default router;

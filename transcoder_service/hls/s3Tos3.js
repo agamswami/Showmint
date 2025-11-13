@@ -18,12 +18,13 @@ const bucketName = process.env.AWS_BUCKET;
 const hlsFolder = 'hls';
 
 
-const s3ToS3 = async (mp4FileName) => {
+const s3ToS3 = async (title ,  mp4FileName) => {
    console.log('Starting script');
    console.time('req_time');
    try {
        console.log('Downloading s3 mp4 file locally');
        const mp4FilePath = `${mp4FileName}`;
+       console.log(mp4FilePath);
        const writeStream = fs.createWriteStream('local.mp4');
        const readStream = s3
            .getObject({ Bucket: bucketName, Key: mp4FilePath })

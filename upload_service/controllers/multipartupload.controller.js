@@ -39,6 +39,7 @@ export const uploadChunk = async (req, res) => {
    try {
        console.log('Uploading Chunk');
        const { filename, chunkIndex, uploadId } = req.body;
+    //    console.log("filename = " , filename);
        const s3 = new AWS.S3({
            accessKeyId: process.env.AWS_ACCESS_KEY_ID,
            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -68,6 +69,7 @@ export const completeUpload = async (req, res) => {
    try {
        console.log('Completing Upload');
        const { filename, totalChunks, uploadId, title, description, author } = req.body;
+       console.log("filename = ",filename)
 
     //    const uploadedParts = [];
 
@@ -106,8 +108,8 @@ export const completeUpload = async (req, res) => {
 
        console.log("data----- ", uploadResult);
 
-       await addVideoDetailsToDB(title, description , author, uploadResult.Location);
-       pushVideoForEncodingToKafka(title, uploadResult.Location);
+       await addVideoDetailsToDB(title, filename ,description , author, uploadResult.Location);
+       pushVideoForEncodingToKafka(title, filename, uploadResult.Location);
        return res.status(200).json({ message: "Uploaded successfully!!!" });
 
    } catch (error) {
@@ -120,7 +122,7 @@ export const uploadToDb = async (req, res) => {
     console.log("Adding details to DB");
     try {
         const videoDetails = req.body;
-        await addVideoDetailsToDB(videoDetails.title, videoDetails.description, videoDetails.author, videoDetails.url);    
+        await addVideoDetailsToDB(videoDetails.title, videoDetails.filename ,videoDetails.description, videoDetails.author, videoDetails.url);    
         return res.status(200).send("success");
     } catch (error) {
         console.log("Error in adding to DB ", error);

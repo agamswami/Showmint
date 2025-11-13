@@ -16,6 +16,7 @@ datasource db {
 model VideoData {
   id          Int     @id @default(autoincrement())
   title       String
+  filename    String
   description String?
   author      String
   url         String

@@ -25,6 +25,8 @@ async function generateSignedUrl(videoKey) {
    });
 }
 
+
+
 const watchVideo = async (req, res) => {
    try {
        const videoKey = req.query.key; // Key of the video file in S3

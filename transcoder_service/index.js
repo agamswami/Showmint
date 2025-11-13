@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/transcode', (req, res) => {
-    s3ToS3(req.body.name);
+    s3ToS3(req.body.title ,req.body.name);
     // convertToHLS();
     res.send('Transcoding done');
 })
@@ -30,7 +30,8 @@ app.get('/transcode', (req, res) => {
 const kafkaconfig = new KafkaConfig()
 kafkaconfig.consume("transcode", (value) => {
     console.log("Got data from kafka : ", value);
-    s3ToS3(value.title);
+    const message = JSON.parse(value);
+    s3ToS3(message.title , message.filename);
     console.log("transcoding done");
 })
 

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation';
 
 // import dotenv from "dotenv";
 
@@ -14,7 +15,7 @@ const UploadForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [author, setAuthor] = useState('');
-
+  const router = useRouter();
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -85,6 +86,10 @@ const UploadForm = () => {
       });
 
       console.log(completeRes.data);
+      alert("Upload completed successfully!");
+
+      router.push("/");
+      
     } catch (error) {
       console.error('Error uploading file:', error);
     }

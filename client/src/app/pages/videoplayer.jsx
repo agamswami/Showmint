@@ -7,7 +7,6 @@ const VideoPlayer = (HLS_url , main_url) => {
    const videoRef = useRef(null);
    const hlsSrc = HLS_url;
    const mainSrc = HLS_url;
-//    const src = "https://classes.s3.ap-south-1.amazonaws.com/output/test_mp4_master.m3u8";
 
    useEffect(() => {
        const video = videoRef.current;

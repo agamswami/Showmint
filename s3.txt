@@ -1,0 +1,49 @@
+bucket policy
+{
+    "Version": "2008-10-17",
+    "Id": "PolicyForCloudFrontPrivateContent",
+    "Statement": [
+        {
+            "Sid": "AllowCloudFrontServicePrincipal",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "cloudfront.amazonaws.com"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::showmint-2/*",
+            "Condition": {
+                "ArnLike": {
+                    "AWS:SourceArn": "arn:aws:cloudfront::448049791680:distribution/E10WA8AQALKHPW"
+                }
+            }
+        }
+    ]
+}
+
+
+
+bucket cors
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "GET",
+            "HEAD"
+        ],
+        "AllowedOrigins": [
+            "http://localhost:3000",
+            "*"
+        ],
+        "ExposeHeaders": [
+            "ETag",
+            "Content-Length",
+            "Content-Type",
+            "x-amz-request-id",
+            "x-amz-id-2",
+            "x-amz-server-side-encryption"
+        ],
+        "MaxAgeSeconds": 3000
+    }
+]

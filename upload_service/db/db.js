@@ -11,4 +11,5 @@ export async function addVideoDetailsToDB(title, filename,description, author, u
       url: url
   } })
  console.log(videoData);
+ return videoData
 }

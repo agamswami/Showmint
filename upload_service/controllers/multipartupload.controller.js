@@ -1,6 +1,7 @@
 import AWS from 'aws-sdk';
 import { addVideoDetailsToDB } from '../db/db.js';
 import { pushVideoForEncodingToKafka } from './kafkapublisher.controller.js';
+import PushToOpenSearch from '../opensearch/pushToOpenSearch.js';
 
 // Initialize upload
 export const initializeUpload = async (req, res) => {
@@ -108,8 +109,19 @@ export const completeUpload = async (req, res) => {
 
        console.log("data----- ", uploadResult);
 
-       await addVideoDetailsToDB(title, filename ,description , author, uploadResult.Location);
-       pushVideoForEncodingToKafka(title, filename, uploadResult.Location);
+       const genrateCDF_URL = (filename) => {
+         const CDF_URL = `${
+           process.env.CDF_URL
+         }/hls/${filename.replace(".", "_")}_master.m3u8`;
+         return CDF_URL;
+       }; 
+
+       const CDF_URL = genrateCDF_URL(filename)
+
+       const video = await addVideoDetailsToDB(title, filename ,description , author, CDF_URL);
+       pushVideoForEncodingToKafka(title, filename, CDF_URL);
+       PushToOpenSearch(video.id,title, filename, description, author, CDF_URL);
+
        return res.status(200).json({ message: "Uploaded successfully!!!" });
 
    } catch (error) {

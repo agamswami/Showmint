@@ -28,10 +28,11 @@ class KafkaConfig {
        try {
            const result = await this.producer.connect()
            console.log("kafka connected... : ", result)
-           await this.producer.send({
+           const response = await this.producer.send({
                topic: topic,
                messages: messages
-           })     
+           })
+           return response;     
        } catch (error) {
            console.log(error)
        }finally{

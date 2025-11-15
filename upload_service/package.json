@@ -12,8 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@opensearch-project/opensearch": "^3.5.1",
     "@prisma/client": "^5.13.0",
-    "aws-sdk": "^2.1608.0",
+    "aws-sdk": "^2.1692.0",
+    "aws4": "^1.13.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",

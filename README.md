@@ -41,22 +41,22 @@ It supports **chunk file upload → distributed transcoding → HLS streaming �
 These images are stored in `assets/` and used for showcasing the system.
 
 ### Home Page  
-![Home Page](`assets/Screenshot 2025-11-16 003018.png`)
+![Home Page](`assets/HomePage.png`)
 
 ### Login Page  
-![Login Page](`assets/Screenshot 2025-11-16 003029.png`)
+![Login Page](`assets/SLoginPage.png`)
 
 ### Loged In Page  
-![Loged In Page](`assets/Screenshot 2025-11-16 003058.png`)
+![Loged In Page](`assets/LogedInPage.png`)
 
 ### HLS Player  
-![HLS Player](`assets/Screenshot 2025-11-16 003121.png`)
+![HLS Player](`assets/HLSPlayer.png`)
 
 ### Upload Form  
-![Upload Form](`assets/Screenshot 2025-11-16 003143.png`)
+![Upload Form](`assets/UploadForm.png`)
 
 ### Search  
-![Search](`assets/Screenshot 2025-11-16 003143.png`)
+![Search](`assets/Search.png`)
 
 ---
 
